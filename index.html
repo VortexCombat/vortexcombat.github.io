@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    
+    <link rel="icon" type="image/png" href="favicon.png">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body> <div id="gradient-bg"></div> <header>
+        <nav>
+            <a href="#about" class="nav-link active">About Me</a>
+            <a href="#projects" class="nav-link">Projects</a>
+            <a href="#contact" class="nav-link">Contact</a>
+        </nav>
+        
+        <div class="theme-switch-wrapper">
+            <label class="theme-switch" for="theme-toggle">
+                <input type="checkbox" id="theme-toggle" />
+                <span class="slider"></span>
+            </label>
+        </div>
+        </header>
+
+    <main>
+        <section id="about" class="content-section">
+            <h1 class="fade-in">Hi, I'm VortexCombat!</h1>
+            <p class="fade-in delay-1">
+                Welcome to my personal portfolio. I'm passionate about architecture and learning development. 
+                I built this page to talk about myself.
+            </p>
+            <p class="fade-in delay-2">
+                Stay tuned! This site is a work in progress, just like me.
+            </p>
+        </section>
+
+        <section id="projects" class="content-section hidden">
+            <h2 class="fade-in">My Projects</h2>
+            <p class="fade-in delay-1">This space is currently empty, but I'm excited to fill it soon!</p>
+            
+            <div class="project-grid fade-in delay-2">
+                </div>
+        </section>
+        
+        <section id="contact" class="content-section hidden">
+            <h2 class="fade-in">Get In Touch</h2>
+            <p class="fade-in delay-1">
+                I'm always open to new connections and collaborations. Feel free to reach out on any of the platforms below!
+            </p>
+            <div class="contact-links fade-in delay-2">
+                <a href="https://github.com/VortexCombat" target="_blank" class="contact-btn github">
+                    <i class="fa-brands fa-github"></i> GitHub
+                </a>
+                <a href="https://steamcommunity.com/id/vortexcombat/" target="_blank" class="contact-btn steam">
+                    <i class="fa-brands fa-steam"></i> Steam
+                </a>
+                <a href="https://www.xbox.com/play/user/TheVortex3350" target="_blank" class="contact-btn xbox">
+                    <i class="fa-brands fa-xbox"></i> Xbox
+                </a>
+                <a href="https://www.instagram.com/vortxcombat/" target="_blank" class="contact-btn instagram">
+                    <i class="fa-brands fa-instagram"></i> Instagram
+                </a>
+                <a href="#" class="contact-btn discord" data-copy="VortexCombat">
+                    <i class="fa-brands fa-discord"></i> Discord
+                </a>
+                <a href="#" class="contact-btn epicgames" data-copy="VortexCombat">
+                    <i class="fa-solid fa-gamepad"></i> Epic Games
+                </a>
+            </div>
+        </section>
+    </main>
+    
+    <div id="copy-popup" class="copy-popup">
+        <span id="copy-popup-text"></span>
+        <button id="copy-popup-btn">Copy</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
