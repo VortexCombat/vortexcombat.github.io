@@ -3,14 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
     
+    <title>VortexCombat - Portfolio</title>
+    <meta name="description" content="Welcome to my personal portfolio. I'm passionate about architecture and learning development. I built this page to talk about myself.">
+    <meta name="keywords" content="VortexCombat, Portfolio, Architecture, Development, Personal Website, Projects, Coding">
+    <meta name="author" content="VortexCombat">
+    <meta name="robots" content="index, follow">
+
+    <meta property="og:title" content="VortexCombat - Portfolio">
+    <meta property="og:description" content="Welcome to my personal portfolio. I'm passionate about architecture and learning development.">
+    <meta property="og:image" content="https://vortexcombat.org/favicon.png">
+    <meta property="og:url" content="https://vortexcombat.org">
+    <meta property="og:type" content="website">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="VortexCombat - Portfolio">
+    <meta name="twitter:description" content="Welcome to my personal portfolio. I'm passionate about architecture and learning development.">
+    <meta name="twitter:image" content="https://vortexcombat.org/favicon.png">
+
     <link rel="icon" type="image/png" href="favicon.png">
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"></noscript>
+    
     <link rel="stylesheet" href="styles.css">
 </head>
-<body> <div id="gradient-bg"></div> <header>
+<body> 
+    <div id="gradient-bg"></div> 
+    
+    <header>
         <nav>
             <a href="#about" class="nav-link active">About Me</a>
             <a href="#projects" class="nav-link">Projects</a>
@@ -23,7 +44,7 @@
                 <span class="slider"></span>
             </label>
         </div>
-        </header>
+    </header>
 
     <main>
         <section id="about" class="content-section">
@@ -51,22 +72,22 @@
                 I'm always open to new connections and collaborations. Feel free to reach out on any of the platforms below!
             </p>
             <div class="contact-links fade-in delay-2">
-                <a href="https://github.com/VortexCombat" target="_blank" class="contact-btn github">
+                <a href="https://github.com/VortexCombat" target="_blank" class="contact-btn github" aria-label="Visit VortexCombat's GitHub Profile">
                     <i class="fa-brands fa-github"></i> GitHub
                 </a>
-                <a href="https://steamcommunity.com/id/vortexcombat/" target="_blank" class="contact-btn steam">
+                <a href="https://steamcommunity.com/id/vortexcombat/" target="_blank" class="contact-btn steam" aria-label="Visit VortexCombat's Steam Profile">
                     <i class="fa-brands fa-steam"></i> Steam
                 </a>
-                <a href="https://www.xbox.com/play/user/TheVortex3350" target="_blank" class="contact-btn xbox">
+                <a href="https://www.xbox.com/play/user/TheVortex3350" target="_blank" class="contact-btn xbox" aria-label="Visit VortexCombat's Xbox Profile">
                     <i class="fa-brands fa-xbox"></i> Xbox
                 </a>
-                <a href="https://www.instagram.com/vortxcombat/" target="_blank" class="contact-btn instagram">
+                <a href="https://www.instagram.com/vortxcombat/" target="_blank" class="contact-btn instagram" aria-label="Visit VortexCombat's Instagram Profile">
                     <i class="fa-brands fa-instagram"></i> Instagram
                 </a>
-                <a href="#" class="contact-btn discord" data-copy="VortexCombat">
+                <a href="#" class="contact-btn discord" data-copy="VortexCombat" aria-label="Copy VortexCombat's Discord Username">
                     <i class="fa-brands fa-discord"></i> Discord
                 </a>
-                <a href="#" class="contact-btn epicgames" data-copy="VortexCombat">
+                <a href="#" class="contact-btn epicgames" data-copy="VortexCombat" aria-label="Copy VortexCombat's Epic Games Username">
                     <i class="fa-solid fa-gamepad"></i> Epic Games
                 </a>
             </div>

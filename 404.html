@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Lost in Void</title>
+    
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    
+    <style>
+        body {
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+            overflow: hidden;
+        }
+        .error-container {
+            background: var(--content-bg);
+            padding: 40px;
+            border-radius: 15px;
+            border: 1px solid var(--accent-border);
+            box-shadow: 0 0 30px var(--accent-shadow);
+            max-width: 500px;
+            width: 90%;
+            animation: float 6s ease-in-out infinite;
+        }
+        .error-code {
+            font-size: 6rem;
+            font-weight: bold;
+            color: var(--accent);
+            margin: 0;
+            line-height: 1;
+            text-shadow: 0 0 10px var(--accent-shadow);
+        }
+        .error-msg {
+            font-size: 1.5rem;
+            margin: 10px 0 20px 0;
+            color: var(--text-bright);
+            font-weight: bold;
+        }
+        .home-btn {
+            display: inline-block;
+            padding: 12px 35px;
+            background-color: transparent;
+            color: var(--accent);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            border: 2px solid var(--accent);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 20px;
+        }
+        .home-btn:hover {
+            background-color: var(--accent);
+            color: var(--accent-tag-text);
+            box-shadow: 0 0 20px var(--accent-shadow);
+            transform: scale(1.05);
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+    </style>
+</head>
+<body> 
+    <div id="gradient-bg"></div> 
+
+    <div class="error-container">
+        <h1 class="error-code">404</h1>
+        
+        <p class="error-msg">You seem lost in the void.</p>
+        
+        <p style="margin-bottom: 20px; color: var(--text-light); line-height: 1.6;">
+            I haven't architected this part of the universe yet.
+        </p>
+        
+        <a href="/" class="home-btn">
+            Teleport Back
+        </a>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
