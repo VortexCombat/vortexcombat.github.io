@@ -1,91 +1,84 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const themeToggle = document.getElementById('theme-toggle');
-    const body = document.body;
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'blue') {
-        body.classList.add('blue-theme');
-        themeToggle.checked = true;
+  const body = document.body;
+  const header = document.querySelector('[data-header]');
+  const themeToggle = document.querySelector('.theme-toggle');
+  const menuToggle = document.querySelector('.menu-toggle');
+  const mobileNav = document.querySelector('.mobile-nav');
+  const toast = document.querySelector('.toast');
+  const storedTheme = localStorage.getItem('theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+  const setTheme = (dark) => {
+    body.classList.toggle('dark', dark);
+    themeToggle.setAttribute('aria-label', dark ? 'Switch to light theme' : 'Switch to dark theme');
+    document.querySelector('meta[name="theme-color"]').content = dark ? '#0b0c10' : '#f3f1eb';
+  };
+  setTheme(storedTheme ? storedTheme === 'dark' : prefersDark);
+
+  themeToggle.addEventListener('click', () => {
+    const dark = !body.classList.contains('dark');
+    setTheme(dark);
+    localStorage.setItem('theme', dark ? 'dark' : 'light');
+  });
+
+  const closeMenu = () => {
+    menuToggle.setAttribute('aria-expanded', 'false');
+    menuToggle.setAttribute('aria-label', 'Open menu');
+    mobileNav.hidden = true;
+  };
+  menuToggle.addEventListener('click', () => {
+    const open = menuToggle.getAttribute('aria-expanded') === 'true';
+    menuToggle.setAttribute('aria-expanded', String(!open));
+    menuToggle.setAttribute('aria-label', open ? 'Open menu' : 'Close menu');
+    mobileNav.hidden = open;
+  });
+  mobileNav.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+  window.addEventListener('resize', () => { if (window.innerWidth > 900) closeMenu(); });
+
+  const updateHeader = () => header.classList.toggle('scrolled', window.scrollY > 16);
+  updateHeader();
+  window.addEventListener('scroll', updateHeader, { passive: true });
+
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: .12 });
+  document.querySelectorAll('[data-reveal]').forEach(el => revealObserver.observe(el));
+
+  const sections = document.querySelectorAll('main section[id]');
+  const navLinks = document.querySelectorAll('.primary-nav a');
+  const navObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) navLinks.forEach(link => link.classList.toggle('active', link.hash === `#${entry.target.id}`));
+    });
+  }, { rootMargin: '-35% 0px -55%' });
+  sections.forEach(section => navObserver.observe(section));
+
+  let toastTimer;
+  const showToast = (message) => {
+    toast.querySelector('span').textContent = message;
+    toast.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toast.classList.remove('show'), 2400);
+  };
+  toast.querySelector('button').addEventListener('click', () => toast.classList.remove('show'));
+  document.querySelectorAll('[data-copy]').forEach(button => button.addEventListener('click', async () => {
+    const value = button.dataset.copy;
+    try {
+      await navigator.clipboard.writeText(value);
+      showToast(`${value} copied to clipboard`);
+    } catch {
+      const input = document.createElement('textarea');
+      input.value = value; input.style.position = 'fixed'; input.style.opacity = '0';
+      document.body.append(input); input.select(); document.execCommand('copy'); input.remove();
+      showToast(`${value} copied to clipboard`);
     }
-    themeToggle.addEventListener('change', () => {
-        if (themeToggle.checked) {
-            body.classList.add('blue-theme');
-            localStorage.setItem('theme', 'blue');
-        } else {
-            body.classList.remove('blue-theme');
-            localStorage.setItem('theme', 'red'); 
-        }
-    });
-    const navLinks = document.querySelectorAll('.nav-link');
-    const sections = document.querySelectorAll('.content-section');
-    const copyPopup = document.getElementById('copy-popup');
-    const copyPopupText = document.getElementById('copy-popup-text');
-    const copyPopupBtn = document.getElementById('copy-popup-btn');
-    const copyButtons = document.querySelectorAll('.contact-btn[data-copy]');
-    function copyToClipboard(text, buttonElement) {
-        navigator.clipboard.writeText(text).then(() => {
-            if (buttonElement) {
-                const originalText = buttonElement.textContent;
-                buttonElement.textContent = 'Copied!';
-                setTimeout(() => {
-                    buttonElement.textContent = originalText;
-                }, 1500);
-            }
-        }).catch(err => {
-            console.error('Kopyalama başarısız: ', err);
-        });
-    }
-    copyPopupBtn.addEventListener('click', () => {
-        const text = copyPopupText.textContent;
-        copyToClipboard(text, copyPopupBtn);
-    });
-    copyButtons.forEach(button => {
-        button.addEventListener('click', (e) => {
-            e.preventDefault(); 
-            const textToCopy = button.dataset.copy;
-            copyToClipboard(textToCopy, null); 
-            copyPopupText.textContent = textToCopy;
-            copyPopupBtn.textContent = 'Copy'; 
-            const rect = button.getBoundingClientRect();
-            copyPopup.style.display = 'flex'; 
-            copyPopup.style.top = `${rect.top + window.scrollY - copyPopup.offsetHeight - 10}px`;
-            copyPopup.style.left = `${rect.left + window.scrollX + (rect.width / 2) - (copyPopup.offsetWidth / 2)}px`;
-        });
-    });
-    document.addEventListener('click', (e) => {
-        if (!copyPopup.contains(e.target) && !e.target.closest('.contact-btn[data-copy]')) {
-            copyPopup.style.display = 'none';
-        }
-    });
-    function switchTab(targetId) {
-        navLinks.forEach(link => {
-            if (link.getAttribute('href') === `#${targetId}`) {
-                link.classList.add('active');
-            } else {
-                link.classList.remove('active');
-            }
-        });
-        sections.forEach(section => {
-            if (section.id === "about" || section.id === "projects" || section.id === "contact") {
-                if (section.id === targetId) {
-                    section.classList.remove('hidden');
-                } else {
-                    section.classList.add('hidden');
-                }
-            }
-        });
-        if (targetId === 'about') {
-            document.title = 'VortexCombat - Portfolio';
-        } else if (targetId === 'projects') {
-            document.title = 'VortexCombat - Projects';
-        } else if (targetId === 'contact') {
-            document.title = 'VortexCombat - Contact';
-        }
-    }
-    navLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            const targetId = link.getAttribute('href').substring(1);
-            switchTab(targetId);
-        });
-    });
-    switchTab('about');
+  }));
+
+  document.querySelector('[data-year]').textContent = new Date().getFullYear();
+
 });
