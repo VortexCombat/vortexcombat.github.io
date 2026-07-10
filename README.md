@@ -36,11 +36,12 @@ The site is a lightweight, framework-free experience built with semantic HTML, a
 ```text
 PortfolioWebsiteVT/
 ├── index.html     # Main portfolio page
-├── styles.css     # Design tokens, components, layouts, and responsive styles
-├── script.js      # Theme, navigation, reveal, clipboard, and UI behavior
+├── site.v3.css    # Versioned design system, components, and responsive styles
+├── site.v3.js     # Versioned theme, navigation, reveal, and UI behavior
 ├── 404.html       # Custom not-found page
 ├── favicon.png    # Site icon and social preview image
 ├── CNAME          # Custom domain configuration
+├── .nojekyll      # Serves the static files directly on GitHub Pages
 └── README.md
 ```
 
