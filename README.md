@@ -1,75 +1,15 @@
-# VortexCombat Portfolio
+# VortexCombat
 
-A responsive personal portfolio for **VortexCombat**, focused on architecture, development, and ongoing creative work.
+I’m interested in architecture and development, particularly how thoughtful structure shapes the way people experience physical and digital spaces.
 
-## Overview
+## About my work
 
-The site is a lightweight, framework-free experience built with semantic HTML, a token-driven CSS design system, and vanilla JavaScript. Its visual direction combines editorial typography, architectural spacing, a dark glass interface, and a floating IDE-inspired hero element.
+I’m developing my skills through projects, studies, and experimentation. I’m drawn to clear thinking, careful decisions, and work that improves through iteration.
 
-## Features
+## Current focus
 
-- Responsive single-page layout
-- Light and dark themes with system-preference detection
-- Persisted theme selection using `localStorage`
-- Desktop navigation with active-section highlighting
-- Accessible mobile navigation
-- Floating glassmorphic code terminal in the desktop hero
-- Syntax-highlighted profile code and IDE status bar
-- Scroll-triggered content reveals
-- Reduced-motion support
-- Clipboard interactions for Discord and Epic Games
-- Responsive project and contact sections
-- Custom, design-system-aligned 404 page
-- Semantic landmarks, skip navigation, focus states, and live status feedback
+My development work is available through [GitHub](https://github.com/VortexCombat). I’m also exploring ideas beyond development, with more projects to come as they take shape.
 
-## Design system
+## Connect
 
-- **Spacing:** 4px foundation with fluid responsive section spacing
-- **Typography:** responsive 1.25 modular scale using `clamp()`
-- **Color:** semantic tokens for paper, ink, accent, borders, and elevated surfaces
-- **Surfaces:** layered dark glass, subtle borders, restrained shadows, and backdrop blur
-- **Motion:** short easing-based transitions with full `prefers-reduced-motion` handling
-- **Components:** reusable buttons, text links, project cards, navigation controls, and contact rows
-
-## Project structure
-
-```text
-PortfolioWebsiteVT/
-├── index.html     # Main portfolio page
-├── site.v3.css    # Versioned design system, components, and responsive styles
-├── site.v3.js     # Versioned theme, navigation, reveal, and UI behavior
-├── 404.html       # Custom not-found page
-├── favicon.png    # Site icon and social preview image
-├── CNAME          # Custom domain configuration
-├── .nojekyll      # Serves the static files directly on GitHub Pages
-└── README.md
-```
-
-## Run locally
-
-From the project directory:
-
-```powershell
-python -m http.server 4173
-```
-
-Then open [http://127.0.0.1:4173](http://127.0.0.1:4173).
-
-## Deployment
-
-The project consists entirely of static files and can be hosted on GitHub Pages or any static web host. The included `CNAME` configures the custom domain.
-
-## Profiles
-
-- [GitHub](https://github.com/VortexCombat)
-- [Instagram](https://www.instagram.com/devranguller/)
-- [Steam](https://steamcommunity.com/id/vortexcombat/)
-- [Xbox](https://www.xbox.com/play/user/TheVortex3350)
-
-## Browser support
-
-The site targets current versions of Chrome, Edge, Firefox, and Safari. Backdrop-filter effects degrade gracefully when unsupported.
-
-## License
-
-All portfolio content and visual design are © VortexCombat unless otherwise stated.
+Visit my [portfolio](https://vortexcombat.org), or find me on [GitHub](https://github.com/VortexCombat), [Instagram](https://www.instagram.com/devranguller/), [Steam](https://steamcommunity.com/id/vortexcombat/), and [Xbox](https://www.xbox.com/play/user/TheVortex3350).
